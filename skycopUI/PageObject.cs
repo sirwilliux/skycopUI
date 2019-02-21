@@ -84,20 +84,32 @@ namespace SkycopUI
         [FindsBy(How = How.XPath, Using = "//input[@name='travellingAlone' and @value='false']/..")]
         public IWebElement TravelingAloneInput;
 
-        [FindsBy(How = How.XPath, Using = "//span[@id='react-select-9--value']//input")]
+        [FindsBy(How = How.XPath, Using = "//input[@class='Select-input']")]
         public IWebElement CountryInput;
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='react-select-9--option-0']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Lithuania']")]
         public IWebElement CountrySelect;
 
-        [FindsBy(How = How.XPath, Using = "//span[@id='react-select-10--value']//div")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Choose language']")]
         public IWebElement LanguageInput;
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='react-select-10--option-1']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='English']")]
         public IWebElement LanguageSelect;
 
         [FindsBy(How = How.XPath, Using = "//input[@name='userEmail']")]
         public IWebElement EmailInput;
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='repeatEmail']")]
+        public IWebElement EmailRepeatInput;
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='userPhoneCode']")]
+        public IWebElement PhoneCodeField;
+
+        [FindsBy(How = How.XPath, Using = "//input[@aria-expanded='true']")]
+        public IWebElement PhoneCodeInput;
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='Lithuania']")]
+        public IWebElement PhoneCodeSelection;
 
         [FindsBy(How = How.XPath, Using = "//input[@name='userPhone']")]
         public IWebElement PhoneNoInput;
@@ -110,6 +122,9 @@ namespace SkycopUI
 
         [FindsBy(How = How.XPath, Using = "//input[@name='userPostCode']")]
         public IWebElement PostcodeInput;
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='termsCheck']/../span[1]")]
+        public IWebElement TCCheckbox;
 
         [FindsBy(How = How.XPath, Using = "//canvas[@id='sigCanvas']")]
         public IWebElement SignatureCanvas;

@@ -77,6 +77,7 @@ namespace SkycopUI
         public void WhenIFillInTravellerDetails()
         {
             Random rand = new Random();
+            var emailGen = rand.Next(10000000).ToString() + "@gmail.com";
             Hooks.WaitIsDisplayed(PageObject.NameInput);
             PageObject.NameInput.SendKeys(Constants.FirstName);
             PageObject.SurnameInput.SendKeys(Constants.LastName);
@@ -84,23 +85,28 @@ namespace SkycopUI
             Hooks.WaitIsDisplayed(PageObject.BirthdateYearSelect, click: true);
             Hooks.WaitIsDisplayed(PageObject.BirthdateMonthSelect, click: true);
             Hooks.WaitIsDisplayed(PageObject.BirthdateDaySelect, click: true);
-            Hooks.WaitIsDisplayed(PageObject.TravelingAloneInput, click: true);
-            PageObject.CountryInput.SendKeys(Constants.Country);
-            Hooks.WaitIsDisplayed(PageObject.CountrySelect, click: true);
-            Hooks.WaitIsDisplayed(PageObject.LanguageInput, click: true);
-            Hooks.WaitIsDisplayed(PageObject.LanguageSelect, click: true);
-            PageObject.EmailInput.SendKeys(rand.Next(10000000).ToString() + "@gmail.com");
+            PageObject.EmailInput.SendKeys(emailGen);
+            PageObject.EmailRepeatInput.SendKeys(emailGen);
+            PageObject.PhoneCodeField.Click();
+            PageObject.PhoneCodeInput.SendKeys(Constants.PhoneCode);
+            Hooks.WaitIsDisplayed(PageObject.PhoneCodeSelection, click: true);
             PageObject.PhoneNoInput.SendKeys(Constants.PhoneNo);
             PageObject.AddressInput.SendKeys(Constants.Address);
             PageObject.CityInput.SendKeys(Constants.City);
             PageObject.PostcodeInput.SendKeys(Constants.Postcode);
+            PageObject.CountryInput.SendKeys(Constants.Country);
+            Hooks.WaitIsDisplayed(PageObject.CountrySelect, click: true);
+            Hooks.WaitIsDisplayed(PageObject.LanguageInput, click: true);
+            Hooks.WaitIsDisplayed(PageObject.LanguageSelect, click: true);
+            Hooks.WaitIsDisplayed(PageObject.TravelingAloneInput, click: true);
+            Hooks.WaitIsDisplayed(PageObject.TCCheckbox, click: true);
             Hooks.WaitIsDisplayed(PageObject.NextStep, click: true);
         }
 
         [When(@"I sign aggreement")]
         public void WhenISignAggreement()
         {
-            Hooks.WaitIsDisplayed(PageObject.SignatureCanvas);
+            Thread.Sleep(3000);
             Actions builder = new Actions(Driver);
             IAction drawAction = builder.MoveToElement(PageObject.SignatureCanvas, 10, 10)
                 .ClickAndHold()

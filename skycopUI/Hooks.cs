@@ -17,9 +17,9 @@ namespace SkycopUI
 
         public static void WaitIsDisplayed(IWebElement element, bool scrollToObject = true, bool click = false)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 if (element.Displayed)
                 {
                     if (scrollToObject)
@@ -32,11 +32,11 @@ namespace SkycopUI
                         Thread.Sleep(1000); //Trying to deal with those pesky fades
                         element.Click();
                     }
-                break;
+                return;
                 }
                 else
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                 }
             }
 
